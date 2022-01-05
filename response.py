@@ -20,11 +20,11 @@ def get_data(id = None):
     req = requests.get(url=URL, data=json_data)
     data = req.json()
     print(data)
-get_data()
+# get_data(1)
 
 def post_data():
     data = {
-        'name' : 'Rajat',
+        'name' : 'mohit',
         'roll' : '104',
         'city' : 'Banaras'
     }
@@ -32,7 +32,7 @@ def post_data():
     req = requests.post(url=URL, data=json_data)
     data = req.json()
     print(data)
-# post_data()
+post_data()
 
 def update_data():
     data = {
