@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'app.apps.AppConfig',
     'rest_framework',
+    'app2.apps.App2Config',
 ]
 
 MIDDLEWARE = [
