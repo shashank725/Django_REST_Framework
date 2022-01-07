@@ -13,7 +13,7 @@ class StudentSerializer(serializers.ModelSerializer):
     name = serializers.CharField(validators=[starts_with_r])
     class Meta:
         model = Student
-        fields = ['name', 'roll', 'city']
+        fields = ['id','name', 'roll', 'city']
         # read_only_fields = ['name', 'roll']
         extra_kwargs = {'name':{'read_only':True}}
 
