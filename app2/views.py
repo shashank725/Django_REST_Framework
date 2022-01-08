@@ -1,5 +1,4 @@
 from django.db.models import manager
-from django.db.models.query import QuerySet
 from django.shortcuts import render
 from rest_framework import serializers
 
@@ -9,57 +8,96 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
-
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, ListCreateAPIView, RetrieveUpdateAPIView, RetrieveDestroyAPIView, RetrieveUpdateDestroyAPIView
 from .models import Student
 from .serializers import StudentSerializer
 # Create your views here.
 
 # Class based Views
 
-class studentList(GenericAPIView, ListModelMixin):
+class studentList(ListAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-class studentCreate(GenericAPIView, CreateModelMixin):
+class studentCreate(CreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-# Above 2 views can also be written together since they does not require PK
-class LCstudentApi(GenericAPIView, ListModelMixin, CreateModelMixin):
+class studentRetrieve(RetrieveAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+class studentUpdate(UpdateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+class studentDestroy(DestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
 
-class studentRetrive(GenericAPIView, RetrieveModelMixin):
+class studentListCreate(ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
-class studentUpdate(GenericAPIView, UpdateModelMixin):
+class studentRetrieveUpdate(RetrieveUpdateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-class studentDestroy(GenericAPIView, DestroyModelMixin):
+class studentRetrieveDestroy(RetrieveDestroyAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
-# Above 3 views can also be written together since they require PK
-class RUDstudentApi(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
+class studentRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
+
+
+
+
+
+
+
+
+# class studentList(GenericAPIView, ListModelMixin):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)
+# class studentCreate(GenericAPIView, CreateModelMixin):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     def post(self, request, *args, **kwargs):
+#         return self.create(request, *args, **kwargs)
+# # Above 2 views can also be written together since they does not require PK
+# class LCstudentApi(GenericAPIView, ListModelMixin, CreateModelMixin):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)
+#     def post(self, request, *args, **kwargs):
+#         return self.create(request, *args, **kwargs)
+
+# class studentRetrive(GenericAPIView, RetrieveModelMixin):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     def get(self, request, *args, **kwargs):
+#         return self.retrieve(request, *args, **kwargs)
+# class studentUpdate(GenericAPIView, UpdateModelMixin):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     def put(self, request, *args, **kwargs):
+#         return self.update(request, *args, **kwargs)
+# class studentDestroy(GenericAPIView, DestroyModelMixin):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     def delete(self, request, *args, **kwargs):
+#         return self.destroy(request, *args, **kwargs)
+# # Above 3 views can also be written together since they require PK
+# class RUDstudentApi(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+#     def get(self, request, *args, **kwargs):
+#         return self.retrieve(request, *args, **kwargs)
+#     def put(self, request, *args, **kwargs):
+#         return self.update(request, *args, **kwargs)
+#     def delete(self, request, *args, **kwargs):
+#         return self.destroy(request, *args, **kwargs)
+
+
+
 
 
 
@@ -106,6 +144,9 @@ class RUDstudentApi(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, Destro
 #         student = Student.objects.get(pk=id)
 #         student.delete()
 #         return Response({'msg':'Data Deleted'})
+
+
+
 
 
 
