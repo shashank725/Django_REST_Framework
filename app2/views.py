@@ -49,8 +49,6 @@ class studentRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
 
 
 
-
-
 # class studentList(GenericAPIView, ListModelMixin):
 #     queryset = Student.objects.all()
 #     serializer_class = StudentSerializer
