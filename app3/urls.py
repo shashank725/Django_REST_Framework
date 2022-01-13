@@ -8,8 +8,8 @@ router = DefaultRouter()
 
 ## Register StudentViewSet with Router
 # router.register('studentapi', views.studentViewSet, basename='student')
-# router.register('studentapi', views.studentModelViewSet, basename='student')
-router.register('studentapi', views.studentReadOnlyModelViewSet, basename='student')
+router.register('studentapi', views.studentModelViewSet, basename='student')
+# router.register('studentapi', views.studentReadOnlyModelViewSet, basename='student')
 
 
 app_name = 'app3'
