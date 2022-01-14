@@ -13,7 +13,7 @@ router.register('studentapi', views.studentModelViewSet, basename='student')
 
 
 app_name = 'app3'
-urlpatterns = [
+urlpatterns = [ 
     path('', include(router.urls)),
 
 ]

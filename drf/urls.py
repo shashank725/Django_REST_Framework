@@ -21,4 +21,7 @@ urlpatterns = [
     path('', include('app.urls')),
     path('api/', include('app2.urls')),
     path('', include('app3.urls')),
+
+    # Brower login for SessionAuthentication
+    path('auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
