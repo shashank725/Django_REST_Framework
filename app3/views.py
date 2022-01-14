@@ -11,6 +11,7 @@ from rest_framework.authentication import BasicAuthentication, SessionAuthentica
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser, IsAuthenticatedOrReadOnly, DjangoModelPermissions, DjangoModelPermissionsOrAnonReadOnly
 
 from .serializers import StudentSerializer
+from .custompermissions import MyPermission
 from .models import Student
 
 # Create your views here.
@@ -24,7 +25,8 @@ class studentModelViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAdminUser]
     # permission_classes = [IsAuthenticatedOrReadOnly]
     # permission_classes = [DjangoModelPermissions]
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    # permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    permission_classes = [MyPermission]
 
 
 
