@@ -3,7 +3,7 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import View
-from requests.api import delete
+# from requests.api import delete
 from rest_framework import serializers
 
 from .serializers import StudentSerializer
