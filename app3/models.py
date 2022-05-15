@@ -12,6 +12,7 @@ class Student(models.Model):
 
 
 # Token Authentication (Signals)
+# This Signal creates Auth Token for User
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver

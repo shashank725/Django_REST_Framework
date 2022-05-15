@@ -17,13 +17,18 @@ from .models import Student
 # Token Authentication
 from rest_framework.authentication import TokenAuthentication
 
+# Custom Authentication
+from .custom_auth import CustomAuthentication
+
+
 # Create your views here.
 
 class studentModelViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     # authentication_classes = [SessionAuthentication]
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = [CustomAuthentication] # Using Custom Authentication
+    # authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     # permission_classes = [AllowAny]
     # permission_classes = [IsAdminUser]
