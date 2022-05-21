@@ -16,12 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+# JWT Authentication
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
     path('api/', include('app2.urls')),
     path('', include('app3.urls')),
 
-    # Brower login for SessionAuthentication
-    path('auth/', include('rest_framework.urls', namespace='rest_framework')),
+    ## Brower login for SessionAuthentication
+    #path('auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    ## JWT Authentication
+    path('gettoken/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('refreshtoken/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('verifytoken/', TokenVerifyView.as_view(), name='token_verify'),
 ]

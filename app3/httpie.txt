@@ -1,8 +1,7 @@
-Token Authentication
+#Token Authentication
 
 By exposing an API endpoint (can be done withour creating auth.py)
 http POST http://127.0.0.1:8000/api-token-auth/ username="admin" password="admin"
-
 
 GET :
 http http://127.0.0.1:8000/studentapi/ 'Authorization:Token a9ae3f453d4fa66b152f8cdbc25650b0dfadf0b9'
@@ -15,3 +14,25 @@ http DELETE http://127.0.0.1:8000/studentapi/2/ 'Authorization:Token a9ae3f453d4
 
 
 
+#JWT(JSON Web Token)
+
+GET Token
+http POST http://127.0.0.1:8000/gettoken/ username="user1" password="user1"
+
+Verify token
+http POST http://127.0.0.1:8000/verifytoken/ token="__your-access-token__"
+
+Refresh Token
+http POST http://127.0.0.1:8000/refreshtoken/ refresh="__your-refresh-token__"
+
+To Access Data
+http http://127.0.0.1:8000/studentapi/ 'Authorization:Bearer _Your-Token_'
+
+POST :
+http -f POST http://127.0.0.1:8000/studentapi/ name=Ankush roll=102 city=PortBlair 'Authorization:Bearer _Access-Token_'
+
+PUT :
+http PUT http://127.0.0.1:8000/studentapi/2/ name=Random roll=102 city=PortBlair 'Authorization:Bearer _Access-Token_'
+
+DELETE :
+http DELETE http://127.0.0.1:8000/studentapi/2/ 'Authorization:Bearer _Access-Token_'
